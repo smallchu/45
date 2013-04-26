@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" /> 
+        <link rel="stylesheet" href="css/style1.css"></link>
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/script_pr.js"></script>
+        <title>Планирование времени</title>
+    </head>
+    <body>
+        <div class="projects">
+            <div class="navigation">
+                <div class='home'> 
+                    <a href="main.html"><img src="images/home_icon.png" width="57" height="52" alt="Домой"></a>
+                </div>
+                <div class="title"> 
+                    Проекты
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class='button'>
+                <div class='project_window'></div>
+                <a id="add_project" href="#">Добавить новый проект</a>
+            </div>
+            <div class="main-content">
+                <div class='content'>
+                        <div class='check_box'>
+                            <a id="check" href="#"><img src="images/frame.png" width="37" height="31" alt="Чек"></a>
+                        </div>
+                        <div class='string'></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="window"> Добавление проекта
+                <form method="post" action="">
+                <div><input id="add_name_pr" name="name" type="text" value="Введите название проекта" /></div>
+                <div><input id="add_date_pr" name="date" type="text" value="Введите срок*" /></div>
+                <div class="text">*Срок вводится в формате ГГГГ-ММ-ДД</div>
+                <input id="submit_pr" type="button" class="bs" value="Отправить" />
+                <input id="cancel_pr" type="button" class="be" value="Отмена" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

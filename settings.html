@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" /> 
+        <link rel="stylesheet" href="css/style1.css"></link>
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/script_w.js"></script>        
+        <title>Планирование времени</title>
+    </head>
+    <body>
+        <div class="work">
+            <div class="navigation">
+                <div class='home'> 
+                    <a href="main.html"><img src="images/home_icon.png" width="57" height="52" alt="Домой"></a>
+                </div>
+                <div class="title"> 
+                    Настройки
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class='button'>
+                <a id="add_work" href="#">Добавить новую задачу</a>
+            </div>
+            <div class="window"> Добавление задачи
+                <form method="post" action="">
+                    <div><input id="add_name_w" name="name" type="text" value="Введите название задачи" /></div>
+                    <div><input id="add_datetime_w" name="datetime" type="text" value="Введите дату и время*" /></div>
+                    <div class="text">*Дата и время вводятся в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС</div>
+                    <input id="submit_w" type="button" class="bs" value="Отправить" />
+                    <input id="cancel_w" type="button" class="be" value="Отмена" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

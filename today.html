@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" /> 
+        <link rel="stylesheet" href="css/style1.css"></link>
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/script_t.js"></script>
+        <title>Планирование времени</title>
+    </head>
+    <body>
+        <div class="today">
+            <div class="navigation">
+                <div class='home'> 
+                    <a href="main.html"><img src="images/home_icon.png" width="57" height="52" alt="Домой"></a>
+                </div>
+                <div class="title"> 
+                    Сегодня
+                </div>
+            </div>
+            <div class="clear"></div>
+            <!--<div class='button'>
+                <a id="add_work" href="#">Добавить новое дело</a>
+            </div>-->
+            <div class='button'>
+                <a id="settings" href="#">Настройки</a>
+            </div>
+            <div class="window"> Настройка времени 
+                <form method="post" action="">
+                    <div><input id="add_time_b" name="time_b" type="text" value="Введите время начала работы*" /></div>
+                    <div><input id="add_time_e" name="time_e" type="text" value="Введите время конца работы*" /></div>
+                    <div class="text">*Время вводится в формате ЧЧ:ММ:СС</div>
+                    <input id="submit_s" type="button" class="bs" value="Отправить" />
+                    <input id="cancel_s" type="button" class="be" value="Отмена" />
+                </form>
+            </div>            
+        </div>
+    </body>
+</html>
