@@ -31,19 +31,19 @@ function init() {
             $('.main-content-t').empty();
             var html = '';
             for(var i=0; i<data.length;i++) {
-                html +='<div class="content ' + ((data[i].object && data[i].check == 1) ? 'checked' : '') + '">';
+                html +='<div class="content ' + ((data[i].task && data[i].task.check == 1) ? 'checked' : '') + '">';
                 html += '   <div class="time_box">' + data[i].time + '</div>';
-                html += '    <div class="button_t">';
+                html += '    <div class="button_t ' + (data[i].object ? 'nobg' : '') + '">';
                 if (data[i].object) {
                     html += data[i].object.name;
                 } else {
                     html += '        <a class="add" href="#" onclick="get_task(\'' + data[i].type + '\', \'' + data[i].time + '\')">Добавить</a>';
                 }
                 html += '    </div>';
-                if (data[i].object && data[i].object.check == 1) {
-                    html += '<div class="check_box_t"><a onclick="check_'+data[i].type+'('+data[i].object.id+', 0)" href="#"><img src="images/check_in.png" width="38" height="32" alt="Чек" /></a></div>'
+                if (data[i].task && data[i].task.check == 1) {
+                    html += '<div class="check_box_t"><a onclick="check_task('+data[i].task.id+', 0)" href="#"><img src="images/check_in.png" width="38" height="32" alt="Чек" /></a></div>'
                 } else if (data[i].object) {
-                    html += '<div class="check_box_t"><a onclick="check_'+data[i].type+'('+data[i].object.id+', 1)" href="#"><img src="images/frame.png" width="37" height="31" alt="Чек" /></a></div>';
+                    html += '<div class="check_box_t"><a onclick="check_task('+data[i].task.id+', 1)" href="#"><img src="images/frame.png" width="37" height="31" alt="Чек" /></a></div>';
                 }
                 html += '</div>';
                 html += '<div class="clear"></div>';
@@ -68,7 +68,7 @@ function get_task(type, time) {
             $('.tasks').empty();
             var html = '<div>Задания</div>';
             for(var i=0; i<data.length;i++) {
-                html += '<div>' + data[i].name + '</div><a href="#" onclick="add_task(\'' + data[i].id + '\', \'' + type + '\', \'' + time + '\')">Добавить</a>';
+                html += '<div><a href="#" onclick="add_task(\'' + data[i].id + '\', \'' + type + '\', \'' + time + '\')">' + data[i].name + '</a></div>';
             }
             $('.tasks').prepend(html);
             $('.tasks').show();
@@ -89,21 +89,10 @@ function add_task(id, type, time) {
     });
 }
 
-function check_work(id, check) {
+function check_task(id, check) {
     $.ajax({
         type: "POST",
-        url: 'php/check_work.php',
-        data: {"id":id,"check":check},
-        success: function() {
-            init();
-        }
-    });
-}
-
-function check_project(id, check) {
-    $.ajax({
-        type: "POST",
-        url: 'php/check_project.php',
+        url: 'php/check_task.php',
         data: {"id":id,"check":check},
         success: function() {
             init();

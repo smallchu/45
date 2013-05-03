@@ -23,7 +23,7 @@ function init() {
                 } else {
                     html += '<div class="check_box"><a onclick="check_work('+data[i].id+', 1)" href="#"><img src="images/frame.png" width="37" height="31" alt="Чек" /></a></div>';
                 }
-                html += '<div class="string">'+data[i].name+'</div>';
+                html += '<div class="string">&nbsp;&nbsp;'+data[i].name+'</div>';
                 html +='</div>'
             };
             $('.main-content-w').prepend(html);

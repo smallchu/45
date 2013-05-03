@@ -12,28 +12,36 @@ foreach (range($start, $end) as $number) {
     $key = "{$number}:00-{$number}:45";
     $res = mysql_query("select * from today where time = '{$key}'");
     if ($res) {
-        $row = mysql_fetch_assoc($res);
-        if ($row) {
-            $res = mysql_query("select * from projects where id = '{$row['task_id']}'");
+        $task = mysql_fetch_assoc($res);
+        if ($task) {
+            $res = mysql_query("select * from projects where id = '{$task['task_id']}'");
             $row = mysql_fetch_assoc($res);
+        } else {
+            $task = null;
+            $row = null;
         }
     } else {
+        $task = null;
         $row = null;
     }
-    $array[] = array('time' => $key, 'object' => $row, 'type' => 'project');
+    $array[] = array('time' => $key, 'object' => $row, 'type' => 'project', 'task' => $task);
     
     $key = "{$number}:45-{$next}:00";
     $res = mysql_query("select * from today where time = '{$key}'");
     if ($res) {
-        $row = mysql_fetch_assoc($res);
-        if ($row) {
-            $res = mysql_query("select * from work where id = '{$row['task_id']}'");
+        $task = mysql_fetch_assoc($res);
+        if ($task) {
+            $res = mysql_query("select * from work where id = '{$task['task_id']}'");
             $row = mysql_fetch_assoc($res);
+        } else {
+            $task = null;
+            $row = null;
         }
     } else {
+        $task = null;
         $row = null;
     }
-    $array[] = array('time' => $key, 'object' => $row, 'type' => 'work');
+    $array[] = array('time' => $key, 'object' => $row, 'type' => 'work', 'task' => $task);
 }
 
 echo json_encode($array);
