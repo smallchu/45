@@ -5,5 +5,4 @@ $array = array();
 while ($row = mysql_fetch_assoc($res)){
     $array[] = $row;
 }
-
 echo json_encode($array);

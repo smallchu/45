@@ -5,7 +5,7 @@ function check_project(id, check) {
         url: 'php/check_project.php',
         data: {"id":id,"check":check},
         success: function() {
-            $('.main-content').empty();
+            $('.main-content-p').empty();
             init();
         }
     });
@@ -18,7 +18,7 @@ function init() {
         success: function (data) {
             var html = '';
             for(var i=0; i<data.length;i++) {
-                html +='<div class="content">';
+                html +='<div class="content ' + (data[i].check == 1 ? 'checked' : '') + '">';
                 if (data[i].check == 1) {
                     html += '<div class="check_box"><a onclick="check_project('+data[i].id+', 0)" href="#"><img src="images/check_in.png" width="38" height="32" alt="Чек" /></a></div>'
                 } else {
@@ -27,7 +27,7 @@ function init() {
                 html += '<div class="string">'+data[i].name+'</div>';
                 html +='</div>'
             };
-            $('.main-content').prepend(html);
+            $('.main-content-p').prepend(html);
         },
         dataType: "json"
     });
@@ -35,7 +35,7 @@ function init() {
 
 /* а тут лоика работы с элементами */
 $(document).ready(function() {
-    init();
+    init(); /* выполняется функция инициализации которая посылает запрос на get_projects.php, что отдает данные (массив проектов) и добавляет все в маин контент*/
 
     $('#add_project').click(function() {
         $('.window').fadeIn("slow");
@@ -51,7 +51,7 @@ $(document).ready(function() {
             url: 'php/add_project.php',
             data: {"name":name,"date":date},
             success: function() {
-                $('.main-content').empty();
+                $('.main-content-p').empty();
                 init();
                 $('.window').fadeOut("slow");
             }
